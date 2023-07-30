@@ -1,6 +1,6 @@
 ## Huh?
 
-POC for a GraphQL codegen wrapper that requires no configuration and generates not user-land output. Like Prisma for React + Apollo.
+POC for a GraphQL codegen wrapper that requires no configuration and generates no user-land types. Like Prisma for React + Apollo.
 
 1. Write all of your queries in `sdk.graphql`
 2. Run `generate-some-graphql-sdk <schema-url>`
