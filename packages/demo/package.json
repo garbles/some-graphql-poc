@@ -1,0 +1,11 @@
+{
+  "name": "some-graphql-demo",
+  "version": "0.0.1",
+  "dependencies": {
+    "@apollo/client": "^3.7.17",
+    "some-graphql-cli": "^0.0.1"
+  },
+  "scripts": {
+    "generate": "generate-some-graphql-sdk schema.graphql"
+  }
+}

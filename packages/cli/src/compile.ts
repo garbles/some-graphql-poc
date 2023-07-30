@@ -1,32 +1,54 @@
 import path from "path";
+import os from "os";
+import fs from "fs";
+import * as tsup from "tsup";
 import { generate, CodegenConfig } from "@graphql-codegen/cli";
 
 type Options = {
   schema: CodegenConfig["schema"];
   cwd: string;
+  write: boolean;
 };
 
-export const compile = async (options: Partial<Options> = {}) => {
-  const { schema, cwd = process.cwd() } = options;
+export const compile = async (
+  options: Partial<Options> = {}
+): Promise<string> => {
+  const { schema, cwd = process.cwd(), write = true } = options;
+
+  const timestamp = Date.now();
+  const out = path.join(__dirname, `temp/${timestamp}`, `sdk.ts`);
 
   const result = await generate(
     {
       schema,
       cwd,
-      documents: "client.graphql",
+      documents: "sdk.graphql",
       generates: {
-        "./client.ts": {
+        [out]: {
           plugins: [
             "typescript",
             "typescript-operations",
-            "@kitimat/graphql-plugin",
+            "some-graphql-plugin",
           ],
           config: {},
         },
       },
-    }
-    // false
+    },
+    write
   );
 
-  console.log("result:", result);
+  if (write) {
+    await tsup.build({
+      entryPoints: [out],
+      outDir: path.join(__dirname, "out"),
+      format: ["cjs", "esm"],
+      sourcemap: true,
+      clean: true,
+      dts: true,
+    });
+
+    fs.unlinkSync(out);
+  }
+
+  return result[0].content;
 };

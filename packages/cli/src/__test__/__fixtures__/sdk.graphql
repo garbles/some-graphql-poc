@@ -1,0 +1,30 @@
+fragment BookDetails on Book {
+  id
+  title
+  author {
+    id
+    name
+  }
+}
+
+query GetAuthor($id: ID!) {
+  author(id: $id) {
+    id
+    books {
+      id
+      title
+    }
+  }
+}
+
+query GetBook($id: ID!) {
+  book(id: $id) {
+    ...BookDetails
+  }
+}
+
+mutation AddBook($book: BookInput!) {
+  addBook(book: $book) {
+    ...BookDetails
+  }
+}

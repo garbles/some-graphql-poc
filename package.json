@@ -4,12 +4,10 @@
     "packages/*"
   ],
   "scripts": {
-    "dev:cli": "npm run dev --workspaces @kitimat/graphql-cli",
-    "dev:plugin": "npm run dev --workspaces @kitimat/graphql-plugin",
-    "test": "npm test -w @kitimat/graphql-cli",
-    "build": "npm run build --workspaces"
-  },
-  "dependencies": {
-    "@kitimat/graphql-plugin": "^1.0.0"
+    "dev:cli": "npm run dev --workspaces some-graphql-cli",
+    "dev:plugin": "npm run dev --workspaces some-graphql-plugin",
+    "test": "npm test -w some-graphql-cli",
+    "build": "npm run build --workspaces",
+    "demo": "npm run generate -w some-graphql-demo"
   }
 }
