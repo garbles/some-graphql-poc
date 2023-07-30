@@ -1,0 +1,30 @@
+{
+  "name": "@kitimat/graphql-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "module": "build/index.mjs",
+  "types": "build/index.d.ts",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "vitest",
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "author": "Gabe Scholz",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.4.5",
+    "tsup": "^7.1.0",
+    "typescript": "^5.1.6",
+    "vitest": "^0.33.0"
+  },
+  "dependencies": {
+    "@graphql-codegen/plugin-helpers": "^5.0.1",
+    "@graphql-codegen/visitor-plugin-common": "^4.0.1",
+    "graphql": "^16.7.1",
+    "tslib": "^2.6.1"
+  }
+}
