@@ -48,6 +48,7 @@ mutation AddBook($book: BookInput!) {
 ```tsx
 // src/App.tsx
 
+// this is the NPM package that runs `generate-some-graphql-sdk`
 import { sdk } from "some-graphql-cli";
 
 const App = () => {
